@@ -37,7 +37,6 @@ class WeatherAdapter() : RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
         }
     }
 
-
     fun updates(weatherList: List<WeatherDayItem>) {
         this.weatherList = weatherList
         notifyDataSetChanged()

@@ -103,7 +103,6 @@ class MainActivity : AppCompatActivity() {
             viewModel.onRetry(cityInput?.text.toString())
         }
 
-
         myLocation?.setOnClickListener {
             fetchLocation()
             hideKeyboard()
@@ -114,7 +113,6 @@ class MainActivity : AppCompatActivity() {
             hideKeyboard()
         }
     }
-
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -142,7 +140,6 @@ class MainActivity : AppCompatActivity() {
         adapter = WeatherAdapter()
         recyclerView.adapter = adapter
     }
-
 
     private fun searchWeather() {
         val fromEditText: String = cityInput?.text.toString()
@@ -191,7 +188,6 @@ class MainActivity : AppCompatActivity() {
             ""
         }
     }
-
 }
 
 private const val PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 101

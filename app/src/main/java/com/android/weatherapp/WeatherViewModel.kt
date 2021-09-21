@@ -19,21 +19,17 @@ class WeatherViewModel(
 ) : ViewModel() {
     private var weatherSubscription: Disposable? = null
 
-
     private val _currentWeather = MutableLiveData<WeatherDayItem>()
     var currentWeather: LiveData<WeatherDayItem> = _currentWeather
 
     private val _progressChanges = MutableLiveData<Boolean>()
     var progressChanges: LiveData<Boolean> = _progressChanges
 
-
     private var _futureWeather = MutableLiveData<List<WeatherDayItem>>()
     var futureWeather: LiveData<List<WeatherDayItem>> = _futureWeather
 
     private var _errorChanges = MutableLiveData<String>()
     var errorChanges: LiveData<String> = _errorChanges
-
-
 
     fun getWeather(search: String) {
         weatherSubscription?.dispose()
@@ -65,7 +61,6 @@ class WeatherViewModel(
         super.onCleared()
         weatherSubscription?.dispose()
     }
-
 
     class WeatherViewModelFactory @Inject constructor(
         private val wheatherInteractor: WeatherInteractor,

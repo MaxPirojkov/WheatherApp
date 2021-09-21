@@ -8,5 +8,4 @@ fun ImageView.loadImage(imageUrl: String?) {
         .load(imageUrl)
         .error(R.drawable.ic_broken)
         .into(this)
-
 }
