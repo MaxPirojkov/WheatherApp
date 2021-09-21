@@ -7,3 +7,5 @@ data class CityIdResponse(
     @SerializedName("woeid") val cityId: Int,
 )
 
+
+

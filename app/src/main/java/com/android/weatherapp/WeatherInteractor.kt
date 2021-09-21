@@ -11,23 +11,17 @@ import javax.inject.Inject
 interface WeatherInteractor {
     fun getWeather(query: String): Single<WeatherResponse>
 
-    fun getCityName(query: String): Single<List<CityIdResponse>>
 }
 
-class WeatherInteractorImpl @Inject constructor(private val api: WeatherApi): WeatherInteractor {
-     override fun getWeather(query: String): Single<WeatherResponse> {
-         // подписываемся
-          return  api.getIdByName(query)
-                .map { it.first() } // филтриуем
-                .flatMap{ api.getWeatherById(it.cityId)} // создаем поток
-                .subscribeOn(Schedulers.io())
-
-        }
-
-    override fun getCityName(query: String): Single<List<CityIdResponse>> {
+class WeatherInteractorImpl @Inject constructor(private val api: WeatherApi) : WeatherInteractor {
+    override fun getWeather(query: String): Single<WeatherResponse> {
         return api.getIdByName(query)
+            .map { it.first() }
+            .flatMap { api.getWeatherById(it.cityId) }
             .subscribeOn(Schedulers.io())
+
     }
+
 }
 
 

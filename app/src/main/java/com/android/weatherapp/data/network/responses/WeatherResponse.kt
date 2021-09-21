@@ -15,9 +15,9 @@ data class WeatherDay(
 )
 
 data class WeatherDayItem(
-    val minTemp: Float,
-    val maxTemp: Float,
-    val theTemp: Float,
+    val minTemp: String,
+    val maxTemp: String,
+    val theTemp: String,
     val weatherAbbr: String,
     val applicableDate: String,
     val iconUrl: String

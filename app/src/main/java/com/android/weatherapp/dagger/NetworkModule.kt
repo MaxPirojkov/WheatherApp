@@ -20,9 +20,7 @@ object NetworkModule {
     private const val BASE_URL = "https://www.metaweather.com/api/"
 
     @Provides
-//    // TODO
-//
-     fun getUnsafeOkHttpClient(): OkHttpClient {
+    fun getUnsafeOkHttpClient(): OkHttpClient {
         val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
             override fun checkClientTrusted(chain: Array<out X509Certificate>?, authType: String?) {
             }
@@ -43,12 +41,11 @@ object NetworkModule {
             .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
             .hostnameVerifier { _, _ -> true }.build()
     }
+
     @Provides
-//    @Singleton
     fun provideRetrofit(
         gson: Gson,
         okHttpClient: OkHttpClient,
-//        context: Context
     ): Retrofit {
         val retrofitBuilder = Retrofit.Builder()
 
@@ -61,13 +58,11 @@ object NetworkModule {
 
 
     @Provides
-//    @Singleton
     fun provideWeatherApi(retrofit: Retrofit): WeatherApi {
         return retrofit.create(WeatherApi::class.java)
     }
 
     @Provides
-//    @Singleton
     fun provideGson(): Gson {
         return GsonBuilder()
             .create()
