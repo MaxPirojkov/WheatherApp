@@ -12,8 +12,5 @@ interface WeatherApi {
     fun getIdByName(@Query("query") query: String): Single<List<CityIdResponse>>
 
     @GET("location/{woeid}/")
-    fun getWeatherById(@Path("woeid")cityId: Int): Single<WeatherResponse>
-
-//    @GET("static/img/weather/{X}.svg")
-//    fun  getImage(@Path("X")X: String): Single<WeatherResponse>
+    fun getWeatherById(@Path("woeid") cityId: Int): Single<WeatherResponse>
 }

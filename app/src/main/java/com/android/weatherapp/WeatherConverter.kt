@@ -14,16 +14,16 @@ class WeatherConverterImpl @Inject constructor() :
     override fun convert(items: List<WeatherDay>): List<WeatherDayItem> {
         return items.map {
             WeatherDayItem(
-                minTemp = it.minTemp,
-                maxTemp = it.maxTemp,
-                applicableDate = it.applicableDate,
-                theTemp = it.theTemp,
+                minTemp = "Min temperature: ${String.format("%.2f", it.minTemp)}",
+                maxTemp = "Max temperature: ${String.format("%.2f", it.maxTemp)}",
+                applicableDate = "Date: ${it.applicableDate}",
                 weatherAbbr = it.weatherAbbr,
-                iconUrl = "$ICON_URL${it.weatherAbbr}.svg"
+                theTemp = "Current weather: ${String.format("%.2f", it.theTemp)}",
+                iconUrl = "$ICON_URL${it.weatherAbbr}.png"
             )
         }
     }
 }
 
-private const val ICON_URL = "https://www.metaweather.com/static/img/weather/"
+private const val ICON_URL = "https://www.metaweather.com/static/img/weather/png/64/"
 

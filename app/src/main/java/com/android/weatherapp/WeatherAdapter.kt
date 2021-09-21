@@ -1,7 +1,5 @@
 package com.android.weatherapp
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,16 +7,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.weatherapp.data.network.responses.WeatherDayItem
-import com.android.wheatherapp.R
-import kotlin.math.roundToInt
 
-class RecyclerAdapter(
-    context: Context
-) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class WeatherAdapter() : RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
     private var weatherList: List<WeatherDayItem> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.weather_item, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.preview_weather_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -36,13 +31,12 @@ class RecyclerAdapter(
 
         fun bind(previewWeather: WeatherDayItem) {
             itemImage.loadImage(previewWeather.iconUrl)
-            itemDate.setText("Date: ${previewWeather.applicableDate}")
-            itemMinTemp.setText("Min temperature: ${(previewWeather.minTemp * 100).roundToInt() / 100.0}")
-            itemMaxTemp.setText("Max temperature: ${(previewWeather.maxTemp* 100).roundToInt() / 100.0}")
-
-            //itemView.SetOnClickListener {onItemClick.invoke(adapterPosition}
+            itemDate.setText(previewWeather.applicableDate)
+            itemMinTemp.setText(previewWeather.minTemp)
+            itemMaxTemp.setText(previewWeather.maxTemp)
         }
     }
+
 
     fun updates(weatherList: List<WeatherDayItem>) {
         this.weatherList = weatherList

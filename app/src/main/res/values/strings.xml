@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">WheatherApp</string>
+    <string name="app_name">WeatherApp</string>
     <string name="location">Location</string>
     <string name="city_hint">City</string>
     <string name="search_button">SEARCH</string>
     <string name="my_location_button">MY LOCATION</string>
     <string name="title_current_weather">Current weather</string>
+    <string name="retry_button">RETRY</string>
 </resources>
